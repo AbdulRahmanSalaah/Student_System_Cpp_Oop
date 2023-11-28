@@ -36,26 +36,7 @@ public:
     }
 };
 
-class student : public person
-{
-private:
-    double gpa;
-
-public:
-    // setters
-
-    void setGpa(double gpa)
-    {
-        this->gpa = gpa;
-    }
-    // getters
-
-    double getGpa()
-    {
-        return gpa;
-    }
-};
-class teacher : public person
+class Teacher : public person
 {
 private:
     double salary;
@@ -70,5 +51,37 @@ public:
     double getSalary()
     {
         return salary;
+    }
+};
+
+class student : public person
+{
+private:
+    double gpa;
+    Teacher teachers[5];
+
+public:
+    // setters
+
+    void setGpa(double gpa)
+    {
+        this->gpa = gpa;
+    }
+    void setTeachers(Teacher teachers[5])
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            this->teachers[i] = teachers[i];
+        }
+    }
+    // getters
+
+    double getGpa()
+    {
+        return gpa;
+    }
+    Teacher *getTeachers()
+    {
+        return teachers;
     }
 };
