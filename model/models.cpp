@@ -1,15 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-class student
+
+class person
 {
 private:
     string name;
     int age;
     string phoneNumber;
-    double gpa;
 
 public:
-    // setters
     void setName(string name)
     {
         this->name = name;
@@ -22,27 +21,54 @@ public:
     {
         this->phoneNumber = phoneNumber;
     }
+    string getName()
+    {
+        return name;
+    }
+
+    int getAge()
+    {
+        return age;
+    }
+    string getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+};
+
+class student : public person
+{
+private:
+    double gpa;
+
+public:
+    // setters
+
     void setGpa(double gpa)
     {
         this->gpa = gpa;
     }
     // getters
-    string getName()
-    {
-        return this->name;
-    }
 
-    int getAge()
-    {
-        return this->age;
-    }
-    string getPhoneNumber()
-    {
-        return this->phoneNumber;
-    }
     double getGpa()
     {
-        return this->gpa;
+        return gpa;
     }
-    
+};
+class teacher : public person
+{
+private:
+    double salary;
+
+public:
+    // setters
+    void setSalary(double salary)
+    {
+        this->salary = salary;
+    }
+    // getters
+    double getSalary()
+    {
+        return salary;
+    }
 };
