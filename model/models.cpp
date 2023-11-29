@@ -1,29 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Person
+// Create Model ShareData
+class ShareData
 {
 private:
+    int id;
     string name;
-    int age;
-    string phoneNumber;
 
 public:
-    void setName(string name)
+    //  Setter
+    void setId(int &id)
+    {
+        this->id = id;
+    }
+    void setName(string &name)
     {
         this->name = name;
     }
-    void setAge(int age)
+    // Getter
+    int getId()
     {
-        this->age = age;
-    }
-    void setPhoneNumber(string phoneNumber)
-    {
-        this->phoneNumber = phoneNumber;
+        return id;
     }
     string getName()
     {
         return name;
+    }
+};
+// Create Model Person
+class Person : public ShareData
+{
+private:
+    int age;
+    string phoneNumber;
+
+public:
+    void setAge(int age)
+    {
+        this->age = age;
+    }
+    void setPhoneNumber(string &phoneNumber)
+    {
+        this->phoneNumber = phoneNumber;
     }
 
     int getAge()
@@ -35,24 +54,24 @@ public:
         return phoneNumber;
     }
 };
-
+// Create Model Teacher
 class Teacher : public Person
 {
 private:
     double salary;
-    int studentIds[5];
+    vector<int> studentIds;
 
 public:
     // setters
-    void setSalary(double salary)
+    void setSalary(double &salary)
     {
         this->salary = salary;
     }
-    void setStudentIds(int studentIds[5])
+    void setStudentIds(vector<int> &studentIds)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < studentIds.size(); i++)
         {
-            this->studentIds[i] = studentIds[i];
+            this->studentIds.push_back(studentIds[i]);
         }
     }
     // getters
@@ -60,17 +79,46 @@ public:
     {
         return salary;
     }
-    int *getStudentIds()
+    vector<int> getStudentIds()
     {
         return studentIds;
     }
 };
+// Create Model Course
+class Course : public ShareData
+{
+private:
+    double hours;
+    vector<int> studentIds;
 
+public:
+    void setHours(double &hours)
+    {
+        this->hours = hours;
+    }
+    void setStudentIds(vector<int> &studentIds)
+    {
+        for (int i = 0; i < studentIds.size(); i++)
+        {
+            this->studentIds.push_back(studentIds[i]);
+        }
+    }
+    double getHours()
+    {
+        return hours;
+    }
+    vector<int> getStudentIds()
+    {
+        return studentIds;
+    }
+};
+// Create Model Student
 class Student : public Person
 {
 private:
     double gpa;
-    Teacher teachers[5];
+    vector<Teacher> teachers;
+    vector<Course> courses;
 
 public:
     // setters
@@ -79,11 +127,18 @@ public:
     {
         this->gpa = gpa;
     }
-    void setTeachers(Teacher teachers[5])
+    void setTeachers(vector<Teacher> &teachers)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < teachers.size(); i++)
         {
-            this->teachers[i] = teachers[i];
+            this->teachers.push_back(teachers[i]);
+        }
+    }
+    void setCourses(vector<Course> &courses)
+    {
+        for (int i = 0; i < courses.size(); i++)
+        {
+            this->courses.push_back(courses[i]);
         }
     }
     // getters
@@ -92,8 +147,12 @@ public:
     {
         return gpa;
     }
-    Teacher *getTeachers()
+    vector<Teacher> getTeachers()
     {
         return teachers;
+    }
+    vector<Course> getCourses()
+    {
+        return courses;
     }
 };
