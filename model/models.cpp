@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class person
+class Person
 {
 private:
     string name;
@@ -36,10 +36,11 @@ public:
     }
 };
 
-class Teacher : public person
+class Teacher : public Person
 {
 private:
     double salary;
+    int studentIds[5];
 
 public:
     // setters
@@ -47,14 +48,25 @@ public:
     {
         this->salary = salary;
     }
+    void setStudentIds(int studentIds[5])
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            this->studentIds[i] = studentIds[i];
+        }
+    }
     // getters
     double getSalary()
     {
         return salary;
     }
+    int *getStudentIds()
+    {
+        return studentIds;
+    }
 };
 
-class student : public person
+class Student : public Person
 {
 private:
     double gpa;
