@@ -10,11 +10,11 @@ private:
 
 public:
     //  Setter
-    void setId(int &id)
+    void setId(const int &id)
     {
         this->id = id;
     }
-    void setName(string &name)
+    void setName(const string &name)
     {
         this->name = name;
     }
@@ -36,11 +36,11 @@ private:
     string phoneNumber;
 
 public:
-    void setAge(int age)
+    void setAge(const int age)
     {
         this->age = age;
     }
-    void setPhoneNumber(string &phoneNumber)
+    void setPhoneNumber( const string &phoneNumber)
     {
         this->phoneNumber = phoneNumber;
     }
@@ -63,11 +63,11 @@ private:
 
 public:
     // setters
-    void setSalary(double &salary)
+    void setSalary(const double &salary)
     {
         this->salary = salary;
     }
-    void setStudentIds(vector<int> &studentIds)
+    void setStudentIds(const vector<int> &studentIds)
     {
         for (int i = 0; i < studentIds.size(); i++)
         {
@@ -92,11 +92,11 @@ private:
     vector<int> studentIds;
 
 public:
-    void setHours(double &hours)
+    void setHours(const double &hours)
     {
         this->hours = hours;
     }
-    void setStudentIds(vector<int> &studentIds)
+    void setStudentIds(const vector<int> &studentIds)
     {
         for (int i = 0; i < studentIds.size(); i++)
         {
@@ -123,18 +123,18 @@ private:
 public:
     // setters
 
-    void setGpa(double gpa)
+    void setGpa(const double gpa)
     {
         this->gpa = gpa;
     }
-    void setTeachers(vector<Teacher> &teachers)
+    void setTeachers(const vector<Teacher> &teachers)
     {
         for (int i = 0; i < teachers.size(); i++)
         {
             this->teachers.push_back(teachers[i]);
         }
     }
-    void setCourses(vector<Course> &courses)
+    void setCourses(const vector<Course> &courses)
     {
         for (int i = 0; i < courses.size(); i++)
         {

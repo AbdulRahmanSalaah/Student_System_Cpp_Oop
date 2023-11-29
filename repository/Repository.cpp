@@ -7,11 +7,28 @@ using namespace std;
 // Interface studentrepository
 class Studentrepository
 {
+    virtual int addStudent(Student &student) = 0;
 };
 
 // Class StudentRepositoryImpl
 class StudentrepositoryImpl : public Studentrepository
 {
+    vector<Student> students;
+    int index = 0;
+
+public:
+    int addStudent(Student &student)
+    {
+        if (index == 25)
+        {
+            return -1;
+        }
+        else
+        {
+            students.push_back(student);
+            index++;
+        }
+    }
 };
 
 /////////////////////////////  Course \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
