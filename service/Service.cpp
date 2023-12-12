@@ -1,5 +1,7 @@
 #include "../repository/Repository.cpp"
 
+/////////////////////////////  Student \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 // Interface Service
 class StudentService
 {
@@ -19,6 +21,7 @@ public:
     }
 };
 
+/////////////////////////////  Course \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // Interface Service
 class CourseService
 {
@@ -38,6 +41,7 @@ public:
     }
 };
 
+/////////////////////////////  Teacher \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // Interface Service
 class TeacherService
 {
