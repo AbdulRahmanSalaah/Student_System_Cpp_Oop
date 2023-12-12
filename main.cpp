@@ -10,6 +10,29 @@ using namespace std;
 
 #define ll long long
 //==================================================Main..
+
+void displaySystem()
+{
+    cout << "\t\t************ Management System ************" << endl;
+    cout << "Please Enter Your Process you need to do !" << endl;
+    cout << "1 - About Students"
+         << "\t\t"
+         << "2 - About Courses" << endl;
+    cout << "3 - About Teachers"
+         << "\t\t"
+         << "4 - Exit" << endl;
+}
+void showList(string value)
+{
+    cout << "\t\t************ " << value << " Management System ************" << endl;
+    cout << "1 - Add " << value << "\t\t"
+         << "2 - Remove " << value << endl;
+    cout << "3 - Edit " << value << "\t"
+         << "4 - Show " << value << endl;
+    cout << "5 - Show " << value << " By ID"
+         << "\t"
+         << "6 - Exit" << endl;
+}
 int main()
 {
     cout << "\t\t****************Student Management System****************\n\n";
@@ -17,39 +40,28 @@ int main()
     int process;
     while (1)
     {
-        cout << "Please choose the process you want to do\n";
-        cout << "1-Add Student"
-             << "\t\t"
-             << "2-Remove Student" << endl;
-        cout << "3- Edit Student"
-             << "\t"
-             << "4-Show Student \n";
-        cout << "5-Exit" << endl;
+        displaySystem();
         cin >> process;
         switch (process)
         {
         case 1:
-            cout << "Add Student" << endl;
+            showList("Student");
+            cin >> process;
             break;
         case 2:
-
-            cout << "Remove Student" << endl;
+            showList("Course");
+            cin >> process;
             break;
         case 3:
-
-            cout << "Edit Student" << endl;
+            showList("Teacher");
+            cin >> process;
             break;
         case 4:
-
-            cout << "Show Student" << endl;
-            break;
-        case 5:
-            cout << "Exit" << endl;
             exit(0);
             break;
+
         default:
-            cout << "Please enter a valid number" << endl;
-            break;
+            cout << "Invalid Choose" << endl;
         }
     }
 }
