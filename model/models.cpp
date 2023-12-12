@@ -40,7 +40,7 @@ public:
     {
         this->age = age;
     }
-    void setPhoneNumber( const string &phoneNumber)
+    void setPhoneNumber(const string &phoneNumber)
     {
         this->phoneNumber = phoneNumber;
     }
