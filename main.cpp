@@ -5,12 +5,13 @@
 //==================================================include..
 #include <bits/stdc++.h>
 using namespace std;
+#include "controller/Controller.cpp"
 
 //==================================================Define..
 
 #define ll long long
 //==================================================Main..
-
+int id;
 void displaySystem()
 {
     cout << "\t\t************ Management System ************" << endl;
@@ -47,6 +48,34 @@ int main()
         case 1:
             showList("Student");
             cin >> process;
+            if (process == 1)
+            {
+                cout << "Please Enter Student Data: " << endl;
+                Student student;
+                cout << "Enter Student Name :";
+                string name;
+                cin >> name;
+                student.setName(name);
+                cout << "Enter Student Age :";
+                int age;
+                cin >> age;
+                student.setAge(age);
+                cout << "Enter Student PhoneNumber :";
+                string phoneNumber;
+                cin >> phoneNumber;
+                student.setPhoneNumber(phoneNumber);
+                cout << "Enter Student GPA :";
+                double gpa;
+                cin >> gpa;
+                student.setGpa(gpa);
+                StudentController studentController;
+                id = studentController.addStudent(student);
+                if (id != -1)
+                {
+                    cout << "Success Added Student With Id [" << id << "]" << endl;
+                }
+            }
+
             break;
         case 2:
             showList("Course");

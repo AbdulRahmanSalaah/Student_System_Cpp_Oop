@@ -3,31 +3,57 @@
 using namespace std;
 
 /////////////////////////////  Student \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+// static Data
+class Data
+{
+public:
+    static Student students[25];
+    static int indexStudent;
+    static int idStudent;
+    static Course courses[25];
+    static int indexCourse;
+    static int idCourse;
+    static Teacher teachers[25];
+    static int indexTeacher;
+    static int idTeacher;
+};
+// init static data
+Student Data::students[25];
+int Data::indexStudent = 0;
+int Data::idStudent = 1;
+Course Data::courses[25];
+int Data::indexCourse = 0;
+int Data::idCourse = 1;
+Teacher Data::teachers[25];
+int Data::indexTeacher = 0;
+int Data::idTeacher = 1;
 
 // Interface studentrepository
 class Studentrepository
 {
+public:
     virtual int addStudent(Student &student) = 0;
 };
 
 // Class StudentRepositoryImpl
 class StudentrepositoryImpl : public Studentrepository
 {
-    vector<Student> students;
-    int index = 0;
+private:
+    Data d;
 
 public:
     int addStudent(Student &student)
     {
-        if (index == 25)
+        if (d.indexStudent == 25)
         {
             return -1;
         }
         else
         {
-            students.push_back(student);
-            index++;
+            student.setId(d.idStudent++);
+            d.students[d.indexStudent++] = student;
         }
+        return student.getId();
     }
 };
 
@@ -42,21 +68,22 @@ class CourseRepository
 // Class CourseRepositoryImpl
 class CourseRepositoryImpl : public CourseRepository
 {
-    vector<Course> courses;
-    int index = 0;
+private:
+    Data d;
 
 public:
     int addCourse(Course &course)
     {
-        if (index == 25)
+        if (d.indexCourse == 25)
         {
             return -1;
         }
         else
         {
-            courses.push_back(course);
-            index++;
+            course.setId(d.idCourse++);
+            d.courses[d.indexCourse++] = course;
         }
+        return course.getId();
     }
 };
 
@@ -69,20 +96,21 @@ class TeacherRepository
 // Class TeacherRepositoryImpl
 class TeacherRepositoryImpl : public TeacherRepository
 {
-    vector<Teacher> teachers;
-    int index = 0;
+private:
+    Data d;
 
 public:
     int addTeacher(Teacher &teacher)
     {
-        if (index == 25)
+        if (d.indexTeacher == 25)
         {
             return -1;
         }
         else
         {
-            teachers.push_back(teacher);
-            index++;
+            teacher.setId(d.idTeacher++);
+            d.teachers[d.indexTeacher++] = teacher;
         }
+        return teacher.getId();
     }
 };
