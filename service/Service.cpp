@@ -1,4 +1,5 @@
 #include "../repository/Repository.cpp"
+#include "../validation/Validation.cpp"
 
 /////////////////////////////  Student \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -13,11 +14,25 @@ class StudentServiceImpl : public StudentService
 {
 private:
     StudentrepositoryImpl s;
+    StudentValidation studentValidation;
+    ValidationService validationService;
 
 public:
     int addStudent(Student &student)
     {
-        return s.addStudent(student);
+        if (studentValidation.validteStudent(student) == 1)
+        {
+            int id = s.addStudent(student);
+            if (id == -1)
+            {
+                validationService.fullData("Student");
+            }
+            else
+            {
+                return id;
+            }
+        }
+        return -1;
     }
 };
 
@@ -33,11 +48,25 @@ class CourseServiceImpl : public CourseService
 {
 private:
     CourseRepositoryImpl c;
+    CourseValidation courseValidation;
+    ValidationService validationService;
 
 public:
     int addCourse(Course &course)
     {
-        return c.addCourse(course);
+        if (courseValidation.validteCourse(course) == 1)
+        {
+            int id = c.addCourse(course);
+            if (id == -1)
+            {
+                validationService.fullData("Course");
+            }
+            else
+            {
+                return id;
+            }
+        }
+        return -1;
     }
 };
 
@@ -54,10 +83,24 @@ class TeacherServiceImpl : public TeacherService
 {
 private:
     TeacherRepositoryImpl t;
+    TeacherValidation teacherValidation;
+    ValidationService validationService;
 
 public:
     int addTeacher(Teacher &teacher)
     {
-        return t.addTeacher(teacher);
+        if (teacherValidation.validteTeacher(teacher) == 1)
+        {
+            int id = t.addTeacher(teacher);
+            if (id == -1)
+            {
+                validationService.fullData("Teacher");
+            }
+            else
+            {
+                return id;
+            }
+        }
+        return -1;
     }
 };
